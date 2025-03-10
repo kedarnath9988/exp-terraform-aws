@@ -15,6 +15,7 @@ pipeline{
         stage("init"){
             steps{
                 """
+                echo "this is in the inti stage"
                 cd 01-sg
                 """
             }
