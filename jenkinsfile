@@ -17,9 +17,9 @@ pipeline{
                 """
                 cd /01-sg
                 terraform init 
-                """
+                 """
             }
-        }
+            }
             stage("plan"){
                 steps{
                      """
@@ -34,8 +34,7 @@ pipeline{
                 cd /01-sg
                 terraform apploy -auto -approve  
                 """
-
-                }
+                 }
             }
         }
     }
