@@ -15,19 +15,28 @@ pipeline{
         stage("init"){
             steps{
                 """
-                echo "this is in the inti stage"
-                cd 01-sg
+                cd /01-sg
+                terraform init 
                 """
             }
-
-            stage("plan")
+        }
+            stage("plan"){
                 steps{
+                     """
+                cd /01-sg
+                terraform plan 
+                """
+                }
+                }
+            stage("Deploy"){
+                steps{    
+                     """
+                cd /01-sg
+                terraform apploy -auto -approve  
+                """
 
                 }
-            stage("Deploy")
-                steps{
-
-                }
+            }
         }
     }
     post{
