@@ -1,0 +1,50 @@
+pipeline{
+    agent{
+        label 'agent-01'
+    }
+    options{
+        timeout(time:15, unit: "MINUTES")
+        disableConcurrentBuilds()
+    }
+    environment{
+        deploy_to = "production"
+        GREETINGS = "HELLO"
+    }
+
+    stages{
+        stage("init"){
+            steps{
+                """
+                cd 01-sg
+                """
+            }
+
+            stage("plan")
+                steps{
+
+                }
+            stage("Deploy")
+                steps{
+
+                }
+        }
+    }
+    post{
+        always{
+            echo "i will excuite always"
+        }
+        failure{
+            echo "pipe line is failed"
+        }
+        success{
+            echo "pipeline is successful"
+        }
+        changed{
+            echo " there is change in the cureent build from the last build "
+        }
+        fixed{
+            echo "current pipeline is successful but the previous build is faulure"
+        }
+
+    }
+}
