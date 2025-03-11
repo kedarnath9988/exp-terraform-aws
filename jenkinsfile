@@ -6,15 +6,12 @@ pipeline{
         timeout(time:15, unit: "MINUTES")
         disableConcurrentBuilds()
     }
-    environment{
-        deploy_to = "production"
-        GREETINGS = "HELLO"
-    }
+    
 
     stages{
         stage("init"){
             steps{
-                """
+               sh  """
                 cd /01-sg
                 terraform init 
                  """
@@ -22,7 +19,7 @@ pipeline{
             }
             stage("plan"){
                 steps{
-                     """
+                  sh    """
                 cd /01-sg
                 terraform plan 
                 """
@@ -30,7 +27,7 @@ pipeline{
                 }
             stage("Deploy"){
                 steps{    
-                     """
+                  sh  """
                 cd /01-sg
                 terraform apploy -auto -approve  
                 """
