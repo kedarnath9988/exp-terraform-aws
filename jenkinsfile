@@ -12,24 +12,22 @@ pipeline{
         stage("init"){
             steps{
                sh  """
-                cd /01-sg
-                terraform init 
+                ls -ltr 
+                ll
                  """
             }
             }
             stage("plan"){
                 steps{
                   sh    """
-                cd /01-sg
-                terraform plan 
+                
                 """
                 }
                 }
             stage("Deploy"){
                 steps{    
                   sh  """
-                cd /01-sg
-                terraform apploy -auto -approve  
+                 
                 """
                  }
             }
