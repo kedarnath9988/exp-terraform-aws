@@ -13,6 +13,7 @@ pipeline{
             steps{
             
                sh  """
+                ls -ltr 
                echo hello this is in the init stage 
                
                  """
