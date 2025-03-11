@@ -36,19 +36,19 @@ pipeline{
     }
     post{
         always{
-            echo "i will excuite always"
+            echo  echo 'I will always say Hello again!'
         }
         failure{
-            echo "pipe line is failed"
+            echo  echo 'I will failure only!'
         }
         success{
-            echo "pipeline is successful"
+            echo  echo 'I will run  success !'
         }
         changed{
-            echo " there is change in the cureent build from the last build "
+            echo ' there is change in the cureent build from the last build '
         }
         fixed{
-            echo "current pipeline is successful but the previous build is faulure"
+            echo ' current pipeline is successful but the previous build is faulure'
         }
 
     }
