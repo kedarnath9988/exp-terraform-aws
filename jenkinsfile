@@ -33,22 +33,23 @@ pipeline{
                  }
             }
         }
-    }
-    post{
-        always{
-            echo   'I will always say Hello again!'
+        post {
+             always {
+                     echo   'I will always say Hello again!'
         }
-        failure{
+        failure {
             echo   'I will failure only!'
         }
-        success{
+        success {
             echo   'I will run  success !'
         }
-        changed{
+        changed {
             echo ' there is change in the cureent build from the last build '
         }
-        fixed{
-            echo ' current pipeline is successful but the previous build is faulure'
+        fixed {
+            echo ' current pipeline is successful but the previous build is faulure '
         }
-
     }
+    
+
+    
