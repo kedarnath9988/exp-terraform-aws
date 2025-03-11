@@ -11,11 +11,7 @@ pipeline{
     stages{
         stage("init"){
             steps{
-            
                sh  """
-             /*    ls -ltr 
-               echo hello this is in the init stage 
-                */
                 cd 01-sg
                 terraform init -reconfigure 
                  """
