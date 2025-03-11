@@ -11,24 +11,24 @@ pipeline{
     stages{
         stage("init"){
             steps{
+            
                sh  """
-                ls -ltr 
-                ll
-
+               echo hello this is in the init stage 
+               
                  """
             }
             }
             stage("plan"){
                 steps{
                   sh    """
-                
+                echo hello this is in the plan stage 
                 """
                 }
                 }
             stage("Deploy"){
                 steps{    
                   sh  """
-                 
+                 echo hello this is in the Deploy stage
                 """
                  }
             }
