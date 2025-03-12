@@ -73,10 +73,10 @@ pipeline{
                  }
             }
         
-        post {
-             always {
-                    deleteDir() /* clean up our workspace */
-                     echo   'I will always say Hello again!'
+        post { 
+        always { 
+            deleteDir()
+            echo 'I will always say Hello again!'
         }
         failure {
             echo   'I pipeline failed '
