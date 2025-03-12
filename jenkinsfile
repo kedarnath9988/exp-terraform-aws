@@ -8,7 +8,7 @@ pipeline{
         ansiColor('xterm')
     }
     parameters {
-        choice(name: 'terraform', choices: ['apply', 'destroy' ], description: 'Pick something')
+        choice(name: 'terraform_action', choices: ['apply', 'destroy' ], description: 'Pick something')
     }
 
     stages{
@@ -21,6 +21,12 @@ pipeline{
             }
             }
             stage("plan"){
+                when{
+                    expression{
+                        params.terraform_action == 'apply'
+                    }
+                }
+
                 steps{
                   sh    """
                   cd 01-sg
@@ -30,6 +36,11 @@ pipeline{
                 }
                 }
             stage("Deploy"){
+                when{
+                    expression{
+                        params.terraform_action == 'apply'
+                    }
+                }
                 input {
                 message "Should we continue?"
                 ok "Yes, we should."
@@ -38,17 +49,37 @@ pipeline{
                   sh  """
                  cd 01-sg
                  terraform apply -auto-approve 
+
                 """
                  }
             }
         }
+        stage("Deploy"){
+                when{
+                    expression{
+                        params.terraform_action == 'destroy'
+                    }
+                }
+                input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                }
+                steps{    
+                  sh  """
+                 cd 01-sg
+                 terraform apply -auto-approve 
+
+                """
+                 }
+            }
+        
         post {
              always {
                     deleteDir() /* clean up our workspace */
                      echo   'I will always say Hello again!'
         }
         failure {
-            echo   'I will failure only!'
+            echo   'I pipeline failed '
         }
         success {
             echo   'I will run  success !'

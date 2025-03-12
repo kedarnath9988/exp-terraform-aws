@@ -1,43 +1,37 @@
-variable sg_name {
+# Secirity group variable
+variable "sg_name" {
+  type        = string
   default     = "allow_expense"
 }
 
-variable description_sg {
-  default     = "creating the securith grooup for the expense app"
+variable "description_sg"  {
+     default     = "allow_expense-project"
 }
 
-variable from_port_egress{
+variable from_port {
     type = number 
-    default = "0"
+    default = 0 
 }
-variable to_port_egress{
+variable to_port {
     type = number 
-    default = "0"
+    default = 0 
 }
 
-variable protocol_egress {
-  type = number 
-  default     = "-1"
-}
-variable cidr_block_egress {
-  type        = list
-  default     = ["0.0.0.0/0"]
+variable cidr_blocks {
+    type = list( string )
+    default = [ "0.0.0.0/0" ]
 }
 
-variable from_port_ingress{
+variable ingress_from_pport {
     type = number 
-    default = "22"
-}
-variable to_port_ingress{
-    type = number 
-    default = "22"
+    default = 22 
 }
 
-variable protocol_ingress {
- 
-  default     = "tcp"
+variable ingress_to_pport {
+    type = number 
+    default = 22 
 }
-variable cidr_block_ingress {
-  type        = list
-  default     = ["0.0.0.0/0"]
+variable protocol {
+    type = string 
+    default = "tcp"
 }
