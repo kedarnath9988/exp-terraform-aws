@@ -5,6 +5,7 @@ pipeline{
     options{
         timeout(time:15, unit: "MINUTES")
         disableConcurrentBuilds()
+        ansiColor('xterm')
     }
     
 
@@ -14,6 +15,7 @@ pipeline{
                sh  """
                 cd 01-sg
                 terraform init -reconfigure 
+                
                  """
             }
             }
