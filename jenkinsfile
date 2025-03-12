@@ -23,7 +23,9 @@ pipeline{
             stage("plan"){
                 steps{
                   sh    """
-                echo hello this is in the plan stage 
+                  cd 01-sg
+                 terraform plan
+                
                 """
                 }
                 }
@@ -34,7 +36,8 @@ pipeline{
                 }
                 steps{    
                   sh  """
-                 echo hello this is in the Deploy stage
+                 cd 01-sg
+                 terraform apply -auto -approve 
                 """
                  }
             }
