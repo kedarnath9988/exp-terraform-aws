@@ -29,6 +29,7 @@ pipeline{
                 input {
                 message "Should we continue?"
                 ok "Yes, we should."
+                }
                 steps{    
                   sh  """
                  echo hello this is in the Deploy stage
@@ -56,4 +57,6 @@ pipeline{
     }
     
 }
+
+
     
