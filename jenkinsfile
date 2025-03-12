@@ -35,6 +35,7 @@ pipeline{
         }
         post {
              always {
+                    deleteDir() /* clean up our workspace */
                      echo   'I will always say Hello again!'
         }
         failure {
